@@ -21,7 +21,7 @@ const ContactSection = () => {
   setIsSubmitting(true);
 
   const serviceId = (import.meta.env.VITE_EMAILJS_SERVICE_ID as string | undefined) ?? 'service_jhdq5k5';
-  const templateId = (import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string | undefined) ?? 'template_9z8rtp9'; // for you
+  const templateId = (import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string | undefined) ?? 'template_tbjg0xj'; // for you
   const autoReplyTemplateId = (import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID as string | undefined) ?? 'template_tbjg0xj'; // for user
   const publicKey = (import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string | undefined) ?? 'A78PGBAwaGHTVK690';
 
