@@ -60,40 +60,40 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 relative">
+    <section id="skills" className="py-14 relative">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
             Skills & Expertise
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
+          <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto px-4">
             A comprehensive toolkit for building modern web applications
           </p>
         </div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
           {skillCategories.map((category, index) => {
             const Icon = category.icon;
             return (
               <Card
                 key={category.title}
-                className="glass p-6 hover-scale cursor-pointer transition-all duration-300 group border-border/50"
+                className="glass p-4 hover-scale cursor-pointer transition-all duration-300 group border-border/50"
                 onMouseEnter={() => setHoveredSkill(category.title)}
                 onMouseLeave={() => setHoveredSkill(null)}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="space-y-4">
-                  <div className={`w-12 h-12 rounded-lg bg-${category.color}/20 flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                    <Icon className={`w-6 h-6 text-${category.color}`} />
+                  <div className={`w-10 h-10 rounded-lg bg-${category.color}/20 flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                    <Icon className={`w-5 h-5 text-${category.color}`} />
                   </div>
                   
-                  <h3 className="text-xl font-semibold text-foreground group-hover:text-accent transition-colors">
+                  <h3 className="text-lg font-semibold text-foreground group-hover:text-accent transition-colors">
                     {category.title}
                   </h3>
                   
-                  <p className="text-muted-foreground text-sm leading-relaxed">
+                  <p className="text-muted-foreground text-xs leading-relaxed">
                     {category.description}
                   </p>
                   
@@ -101,7 +101,7 @@ const SkillsSection = () => {
                     {category.skills.map((skill) => (
                       <span
                         key={skill}
-                        className={`px-3 py-1 text-xs rounded-full bg-secondary text-secondary-foreground border transition-all duration-300 ${
+                        className={`px-2.5 py-0.5 text-xs rounded-full bg-secondary text-secondary-foreground border transition-all duration-300 ${
                           hoveredSkill === category.title
                             ? 'border-accent text-accent scale-105'
                             : 'border-border'
@@ -118,19 +118,19 @@ const SkillsSection = () => {
         </div>
 
         {/* Tech Stack - Compact cards with circular progress */}
-        <div className="glass rounded-2xl p-6">
-          <h3 className="text-xl md:text-2xl font-bold text-center mb-6 text-foreground">
+        <div className="glass rounded-2xl p-4">
+          <h3 className="text-lg md:text-xl font-bold text-center mb-6 text-foreground">
             Technical Proficiency
           </h3>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
             {techStack.map((tech) => {
-              const radius = 18;
+              const radius = 16;
               const circumference = 2 * Math.PI * radius;
               const offset = circumference - (tech.level / 100) * circumference;
               return (
-                <div key={tech.name} className="glass p-3 rounded-xl flex items-center gap-3 hover-lift">
-                  <svg width="44" height="44" viewBox="0 0 44 44" className="shrink-0">
+                <div key={tech.name} className="glass p-2 rounded-xl flex items-center gap-3 hover-lift">
+                  <svg width="40" height="40" viewBox="0 0 44 44" className="shrink-0">
                     <circle
                       cx="22"
                       cy="22"
@@ -153,7 +153,7 @@ const SkillsSection = () => {
                     />
                   </svg>
                   <div>
-                    <div className={`text-sm font-medium ${tech.color}`}>{tech.name}</div>
+                    <div className={`${tech.color} text-xs font-medium`}>{tech.name}</div>
                     <div className="text-xs text-muted-foreground">{tech.level}%</div>
                   </div>
                 </div>
@@ -165,8 +165,8 @@ const SkillsSection = () => {
       </div>
 
       {/* Background Elements */}
-      <div className="absolute top-1/4 right-10 w-32 h-32 border border-accent/20 rounded-full float opacity-30" />
-      <div className="absolute bottom-1/4 left-10 w-24 h-24 bg-primary/10 rounded-full float opacity-40" style={{ animationDelay: '1s' }} />
+      <div className="absolute top-1/4 right-10 w-24 h-24 border border-accent/20 rounded-full float opacity-30" />
+      <div className="absolute bottom-1/4 left-10 w-20 h-20 bg-primary/10 rounded-full float opacity-40" style={{ animationDelay: '1s' }} />
     </section>
   );
 };

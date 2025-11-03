@@ -50,6 +50,81 @@ const ProjectsSection = () => {
 
   const projectImages = [projectEcommerce, projectTasks, projectWeather];
 
+  const manualFeatured: Project[] = [
+    {
+      id: 900001,
+      title: 'REVAGE ecommerce',
+      description: 'ecommerce',
+      image: projectEcommerce,
+      category: 'Full-Stack',
+      technologies: ['React', 'Node.js', 'Express', 'MongoDB'],
+      github: 'https://github.com/Amal0005/Revage-E-commerce',
+      live: 'https://revage-e-commerce.vercel.app',
+      featured: true,
+      stars: 0,
+    },
+    {
+      id: 900002,
+      title: 'Random Quote Generator',
+      description: 'Dynamic quote display',
+      image: projectTasks,
+      category: 'Frontend',
+      technologies: ['React', 'JavaScript', 'CSS3'],
+      github: 'https://github.com/Amal0005/happy-quotes',
+      live: 'https://happy-quotes.vercel.app',
+      featured: true,
+      stars: 0,
+    },
+    {
+      id: 900003,
+      title: 'Netflix-Clone',
+      description: 'Video streaming platform',
+      image: projectWeather,
+      category: 'Frontend',
+      technologies: ['React', 'TMDB API', 'CSS3'],
+      github: 'https://github.com/Amal0005/Netflix-clone',
+      live: null,
+      featured: true,
+      stars: 0,
+    },
+    {
+      id: 900004,
+      title: 'Book Management System',
+      description: 'Backend with TypeScript',
+      image: projectEcommerce,
+      category: 'Backend',
+      technologies: ['TypeScript', 'Node.js', 'Express', 'PostgreSQL'],
+      github: 'https://github.com/Amal0005/Book-Management-TypeScript',
+      live: null,
+      featured: true,
+      stars: 0,
+    },
+    {
+      id: 900005,
+      title: 'Olx-Clone',
+      description: 'Buy and sell products',
+      image: projectTasks,
+      category: 'Frontend',
+      technologies: ['React', 'CSS3', 'HTML5'],
+      github: 'https://github.com/Amal0005/OLX-Clone-react',
+      live: null,
+      featured: true,
+      stars: 0,
+    },
+    {
+      id: 900006,
+      title: 'ToDo App',
+      description: 'Task management tool',
+      image: projectWeather,
+      category: 'Frontend',
+      technologies: ['React', 'TypeScript', 'Tailwind CSS'],
+      github: 'https://github.com/Amal0005/ToDo-React',
+      live: null,
+      featured: true,
+      stars: 0,
+    },
+  ];
+
   const getCategoryFromLanguage = (language: string | null, topics: string[]): string => {
     if (!language) return "Miscellaneous";
     
@@ -120,11 +195,11 @@ const ProjectsSection = () => {
           stars: repo.stargazers_count
         }));
 
-        setProjects(projectsData);
+        setProjects([...manualFeatured, ...projectsData]);
       } catch (error) {
         console.error('Error fetching GitHub repos:', error);
         // Fallback to empty array if API fails
-        setProjects([]);
+        setProjects(manualFeatured);
       } finally {
         setLoading(false);
       }
@@ -143,7 +218,7 @@ const ProjectsSection = () => {
 
   if (loading) {
     return (
-      <section id="projects" className="py-20 relative">
+      <section id="projects" className="py-14 relative">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
@@ -159,25 +234,25 @@ const ProjectsSection = () => {
   }
 
   return (
-    <section id="projects" className="py-20 relative">
+    <section id="projects" className="py-14 relative">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
             Featured Projects
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
+          <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto px-4">
             Showcasing my best work in web development and software engineering
           </p>
         </div>
 
         {/* Featured Projects Highlight */}
         <div className="mb-16">
-          <h3 className="text-2xl font-bold text-center mb-8 text-foreground">
+          <h3 className="text-xl font-bold text-center mb-8 text-foreground">
             ⭐ Spotlight Projects
           </h3>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {featuredProjects.slice(0, 2).map((project, index) => (
               <Card key={project.id} className="glass overflow-hidden group hover-scale" style={{ animationDelay: `${index * 0.2}s` }}>
                 <div className="aspect-video bg-secondary/50 relative overflow-hidden">
@@ -212,9 +287,9 @@ const ProjectsSection = () => {
                   </div>
                 </div>
 
-                <div className="p-6 space-y-4">
+                <div className="p-4 space-y-3">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-xl font-bold text-foreground group-hover:text-accent transition-colors">
+                    <h3 className="text-lg font-bold text-foreground group-hover:text-accent transition-colors">
                       {project.title}
                     </h3>
                     <Badge variant="secondary" className="bg-accent/20 text-accent border-accent/30">
@@ -222,7 +297,7 @@ const ProjectsSection = () => {
                     </Badge>
                   </div>
 
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {project.description}
                   </p>
 
@@ -234,7 +309,7 @@ const ProjectsSection = () => {
                     ))}
                   </div>
 
-                  <div className="flex items-center space-x-4 pt-4">
+                  <div className="flex items-center space-x-4 pt-2">
                     <a href={project.live} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="w-5 h-5 text-muted-foreground hover:text-accent transition-colors" />
                     </a>
@@ -268,7 +343,7 @@ const ProjectsSection = () => {
         </div>
 
         {/* All Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredProjects.map((project, index) => (
             <Card 
               key={project.id} 
@@ -291,7 +366,7 @@ const ProjectsSection = () => {
                 )}
               </div>
 
-              <div className="p-6 space-y-3">
+              <div className="p-4 space-y-2.5">
                 <div className="flex items-center justify-between">
                   <h3 className="font-bold text-foreground group-hover:text-accent transition-colors">
                     {project.title}
@@ -301,7 +376,7 @@ const ProjectsSection = () => {
                   </Badge>
                 </div>
 
-                <p className="text-sm text-muted-foreground line-clamp-2">
+                <p className="text-xs text-muted-foreground line-clamp-2">
                   {project.description}
                 </p>
 
@@ -318,7 +393,7 @@ const ProjectsSection = () => {
                   )}
                 </div>
 
-                <div className="flex items-center justify-between pt-2">
+                <div className="flex items-center justify-between pt-1.5">
                   <div className="flex space-x-3">
                     {project.live ? (
                       <a href={project.live} target="_blank" rel="noopener noreferrer">
